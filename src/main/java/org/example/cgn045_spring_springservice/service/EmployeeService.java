@@ -18,6 +18,7 @@ import java.util.UUID;
 public class EmployeeService {
 
     private final EmployeeRepository repo;
+    private final IdService idService;
 
     public List<EmployeeWOSocialSecNum> getAllEmployees() {
         return repo.findAll().stream()
@@ -38,14 +39,15 @@ public class EmployeeService {
                 temp.department());
     }
 
-    public void createNewEmployee(EmployeeWOEmployeeNum newEmployee) {
+    public Employee createNewEmployee(EmployeeWOEmployeeNum newEmployee) {
         Employee employee = new Employee(
-                UUID.randomUUID().toString(),
+                idService.generateId(),
                 newEmployee.name(),
                 newEmployee.age(),
                 newEmployee.department(),
                 newEmployee.socialSecNum()
         );
         repo.save(employee);
+        return employee;
     }
 }
