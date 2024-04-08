@@ -68,7 +68,7 @@ class EmployeeServiceTest  {
                 "2"
         );
         //WHEN
-        Employee actual = service.createNewEmployee(testEmployee);
+        EmployeeWOSocialSecNum actual = service.createNewEmployee(testEmployee);
         //THEN
         Assertions.assertEquals(expected, actual);
         verify(mockRepo).save(new Employee(

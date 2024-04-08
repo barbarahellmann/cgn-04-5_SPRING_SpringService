@@ -39,7 +39,7 @@ public class EmployeeService {
                 temp.department());
     }
 
-    public Employee createNewEmployee(EmployeeWOEmployeeNum newEmployee) {
+    public EmployeeWOSocialSecNum createNewEmployee(EmployeeWOEmployeeNum newEmployee) {
         Employee employee = new Employee(
                 idService.generateId(),
                 newEmployee.name(),
@@ -48,6 +48,11 @@ public class EmployeeService {
                 newEmployee.socialSecNum()
         );
         repo.save(employee);
-        return employee;
+        return new EmployeeWOSocialSecNum(
+                employee.employeeNumber(),
+                employee.name(),
+                employee.age(),
+                employee.department()
+        );
     }
 }

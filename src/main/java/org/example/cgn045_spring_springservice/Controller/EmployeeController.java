@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 
 import java.util.*;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api/employee")
@@ -29,7 +30,7 @@ public class EmployeeController {
     }
 
     @PostMapping
-    public void createNewEmployee(@RequestBody EmployeeWOEmployeeNum newEmployee) {
-        service.createNewEmployee(newEmployee);
+    public EmployeeWOSocialSecNum createNewEmployee(@RequestBody EmployeeWOEmployeeNum newEmployee){
+        return service.createNewEmployee(newEmployee);
     }
 }
